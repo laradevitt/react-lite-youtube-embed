@@ -248,6 +248,7 @@ The most minimalist implementation requires two props: `id` from the YouTube you
 | aspectHeight |    number   | Default: `9`. Use this optional prop if you want a custom aspect-ratio. Please be aware of aspect height and width relation and also any custom CSS you are using. |
 | aspectWidth |    number   | Default: `16`. Use this optional prop if you want a custom aspect-ratio. Please be aware of aspect height and width relation and also any custom CSS you are using. |
 | cookie | boolean |    Default: `false` Connect to YouTube via the Privacy-Enhanced Mode using [https://www.youtube-nocookie.com](https://www.youtube-nocookie.com). You should opt-in to allow cookies|
+| offsite | boolean |    Default `false` Don't load iframe but open video on YouTube (in a new tab) instead. |
 | iframeClass | string |    Pass the string class for the own iFrame |
 | muted | boolean | If the video has sound or not. Required autoplay `true` to work |
 | noCookie | boolean |    `Deprecated` Default `false` _use option **cookie** to opt-in_|

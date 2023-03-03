@@ -18,6 +18,7 @@ export interface LiteYouTube {
   iframeClass?: string;
   noCookie?: boolean;
   cookie?: boolean;
+  offsite?: boolean;
   params?: string;
   playerClass?: string;
   playlist?: boolean;
@@ -67,6 +68,7 @@ export default function LiteYouTubeEmbed(props: LiteYouTube) {
   const wrapperClassImp = props.wrapperClass || "yt-lite";
   const onIframeAdded = props.onIframeAdded || function () { };
   const rel = props.rel ? 'prefetch' : 'preload';
+  const offsite = props.offsite || false;
 
   const warmConnections = () => {
     if (preconnected) return;
@@ -76,6 +78,10 @@ export default function LiteYouTubeEmbed(props: LiteYouTube) {
   const addIframe = () => {
     if (iframe) return;
     setIframe(true);
+  };
+
+  const openOnYouTube = () => {
+    window.open(`https://youtu.be/${videoId}`, '_blank', 'noopener, noreferrer');
   };
 
   React.useEffect(() => {
@@ -110,7 +116,7 @@ export default function LiteYouTubeEmbed(props: LiteYouTube) {
       </>
       <article
         onPointerOver={warmConnections}
-        onClick={addIframe}
+        onClick={offsite ? openOnYouTube : addIframe}
         className={`${wrapperClassImp} ${iframe ? activatedClassImp : ""}`}
         data-title={videoTitle}
         style={{
